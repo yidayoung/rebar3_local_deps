@@ -1,6 +1,6 @@
 {application, rebar3_local_deps,
- [{description, "A rebar3 plugin to download deps from load git"},
-  {vsn, "0.1.0"},
+ [{description, "A rebar3 plugin to download deps from local git"},
+  {vsn, "0.1.1"},
   {registered, []},
   {applications,
    [kernel,
