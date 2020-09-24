@@ -3,10 +3,15 @@
 -export([init/1]).
 
 -spec init(rebar_state:t()) -> {ok, rebar_state:t()}.
-init(State0) ->
-    State1 = rebar_state:set_resources(State0, []),
-    State2 = rebar_state:add_resource(State1, {git, rebar3_local_git_resource}),
-    State3 = rebar_state:add_resource(State2, {git_subdir, rebar3_local_git_resource}),
-    State4 = rebar_state:add_resource(State3, {pkg, rebar3_local_git_resource}),
-    State5 = rebar_state:add_resource(State4, {hg, rebar3_local_git_resource}),
-    {ok, State5}.
+init(State) ->
+    LocalDepUrl = rebar_state:get(State, local_deps_url, undefined),
+    case LocalDepUrl of
+        undefined ->
+            {ok, State};
+        _ ->
+            State1 = rebar_state:add_resource(State, {git, rebar3_local_git_resource}),
+            State2 = rebar_state:add_resource(State1, {git_subdir, rebar3_local_git_resource}),
+            State3 = rebar_state:add_resource(State2, {pkg, rebar3_local_git_resource}),
+            State4 = rebar_state:add_resource(State3, {hg, rebar3_local_git_resource}),
+            {ok, State4}
+    end.

@@ -4,8 +4,9 @@
 -export([init/2, lock/2, download/4, needs_update/2, make_vsn/2]).
 
 
-init(Type, _State) ->
-    Resource = rebar_resource_v2:new(Type, ?MODULE, #{}),
+init(Type, State) ->
+    LocalGitUrl = rebar_state:get(State, local_deps_url, undefined),
+    Resource = rebar_resource_v2:new(Type, ?MODULE, LocalGitUrl),
     {ok, Resource}.
 
 lock(AppInfo, LocalGitUrl) ->
