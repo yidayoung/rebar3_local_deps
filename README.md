@@ -7,7 +7,7 @@ Use
 -----
 ```erlang
 {plugins, [
-    {rebar3_svn_deps, ".*",
+    {rebar3_local_deps, ".*",
        {git, "git://github.com/yidayoung/rebar3_local_deps.git", {branch, "master"}}}
 ]}.
 ```
