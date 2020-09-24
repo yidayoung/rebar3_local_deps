@@ -10,5 +10,5 @@
   {modules, []},
 
   {licenses, ["MIT"]},
-  {links, ["https://github.com/yidayoung/intellij-erlang.git"]}
+  {links, [{"GitHub", "https://github.com/yidayoung/rebar3_local_deps.git"}]}
  ]}.
