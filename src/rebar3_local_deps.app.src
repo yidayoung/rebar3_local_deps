@@ -1,0 +1,14 @@
+{application, rebar3_local_deps,
+ [{description, "A rebar3 plugin to download deps from load git"},
+  {vsn, "0.1.0"},
+  {registered, []},
+  {applications,
+   [kernel,
+    stdlib
+   ]},
+  {env,[]},
+  {modules, []},
+
+  {licenses, ["MIT"]},
+  {links, ["https://github.com/yidayoung/intellij-erlang.git"]}
+ ]}.
