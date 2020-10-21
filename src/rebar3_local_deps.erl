@@ -4,9 +4,9 @@
 
 -spec init(rebar_state:t()) -> {ok, rebar_state:t()}.
 init(State) ->
-    LocalDepUrl = rebar_state:get(State, local_deps_url, undefined),
-    case LocalDepUrl of
-        undefined ->
+    UseLocalDeps = rebar_state:get(State, use_local_deps, false),
+    case UseLocalDeps of
+        false ->
             {ok, State};
         _ ->
             State1 = rebar_state:add_resource(State, {git, rebar3_local_git_resource}),
